@@ -1,0 +1,26 @@
+<header class="main-header cf">
+    <div id="logo">Boxr</div>
+    <nav>
+        <ul>
+            <li><a href="#">Sign Up</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <%= link_to "New Move", new_move_path %>
+    
+    <% if @moves.empty? %>
+        <div class="alert alert-info">
+            <p>You have no moves scheduled.</p>
+            <%= link_to "New Move", new_move_path, class: "btn btn-info" %>
+        </div>
+    <% end %>
+    
+    <% @moves.each do |move| %>
+        <div class="move_object">
+            <h2><%= move.name %></h2>
+        </div>
+    <% end %>
+</div>
