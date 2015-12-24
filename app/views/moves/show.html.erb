@@ -1,0 +1,6 @@
+<h2><%= @move.name %></h2>
+<div>
+    <p><%= @move.from %> to <%= @move.to %></p>
+    <%= link_to "Edit Move", edit_move_path %>
+    <%= link_to "Delete Move", @move, method: :delete, data: { confirm: "Are you sure?" } %>
+</div>
