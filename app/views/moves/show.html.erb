@@ -1,6 +1,34 @@
 <h2><%= @move.name %></h2>
 <div>
     <p><%= @move.from %> to <%= @move.to %></p>
-    <%= link_to "Edit Move", edit_move_path %>
-    <%= link_to "Delete Move", @move, method: :delete, data: { confirm: "Are you sure?" } %>
+    <%= link_to "Back", root_path %> | 
+    <%= link_to "Edit Move", edit_move_path %> | 
+    <%= link_to "Delete Move", @move, method: :delete, data: { confirm: "Are you sure?" } %> | 
+    <%= link_to "Add Box", new_move_box_path(@move) %>
+    
+    <% if @boxes.empty? %>
+        <div class="alert alert-info">
+            <p>Planning on moving without boxes? If not add boxes below:</p>
+            <%= link_to "Add Box", new_move_box_path(@move), class: "btn btn-primary btn-block" %>
+        </div>
+    <% end %>
+    
+    <p>Boxes in this move: <%= @box_count %></p>
+    <% @boxes.each do |box| %>
+        <div class="media">
+          <div class="media-left">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= box.name %></h4>
+            <p>Created <%= time_ago_in_words(box.created_at) %> ago</p>
+            <div class="links">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default"><%= link_to "View", move_box_path(@move, box) %></button>
+                    <button type="button" class="btn btn-default"><%= link_to "Edit", edit_move_box_path(@move, box) %></button>
+                    <button type="button" class="btn btn-default"><%= link_to "Delete", move_box_path(@move, box), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
 </div>

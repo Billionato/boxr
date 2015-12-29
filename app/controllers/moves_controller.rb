@@ -1,11 +1,14 @@
 class MovesController < ApplicationController
     
+    before_action :set_move, except: [:index, :new, :create]
+    
     def index
         @moves = Move.all
     end
     
     def show
-        @move = Move.find(params[:id])
+        @boxes = Box.where(move_id: @move.id).order("created_at DESC")
+        @box_count = @boxes.count
     end
     
     #view for the create method
@@ -14,7 +17,8 @@ class MovesController < ApplicationController
     end
     
     def create
-        @move = Move.create(move_params)
+        @move = Move.new(move_params)
+        
         if @move.save
             redirect_to @move
         else
@@ -24,12 +28,9 @@ class MovesController < ApplicationController
     
     #view for update method
     def edit
-        @move = Move.find(params[:id])
     end
     
     def update
-        @move = Move.find(params[:id])
-        
         if @move.update(move_params)
             redirect_to @move, notice: "Successfully updated move"
         else
@@ -39,17 +40,18 @@ class MovesController < ApplicationController
     
     def destroy
         @move = Move.find(params[:id])
-        
-        if @move.destroy
-            redirect_to root_path
-        else
-            redirect_to @move
-        end
+        @move.destroy
+        redirect_to root_path
     end
     
     private
     
+    def set_move
+        @move = Move.find(params[:id])
+    end
+    
     def move_params
         params.require(:move).permit(:name, :from, :to)
     end
+    
 end

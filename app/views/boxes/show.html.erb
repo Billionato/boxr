@@ -1,0 +1,6 @@
+<h2><%= @box.name %></h2>
+<div>
+    <%= link_to "Back", @move %> | 
+    <%= link_to "Edit Box", edit_move_box_path(@move, @box) %> | 
+    <%= link_to "Delete Box", move_box_path(@move, @box), method: :delete, data: { confirm: "Are you sure?" } %> | 
+    <!--<%#= link_to "Add Item", new_move_box_path(@move) %>-->
