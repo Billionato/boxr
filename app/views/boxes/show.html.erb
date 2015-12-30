@@ -1,6 +1,34 @@
 <h2><%= @box.name %></h2>
+
 <div>
     <%= link_to "Back", @move %> | 
-    <%= link_to "Edit Box", edit_move_box_path(@move, @box) %> | 
-    <%= link_to "Delete Box", move_box_path(@move, @box), method: :delete, data: { confirm: "Are you sure?" } %> | 
-    <!--<%#= link_to "Add Item", new_move_box_path(@move) %>-->
+    <%= link_to "Edit Box", edit_box_path(@box) %> | 
+    <%= link_to "Delete Box", @box, method: :delete, data: { confirm: "Are you sure?" } %> | 
+    <%= link_to "Add Item", new_box_item_path(@box) %>
+    
+    <% if @items.empty? %>
+        <div class="alert alert-info">
+            <p>There are no items yet. Add them below:</p>
+            <%= link_to "Add Item", new_box_item_path(@box), class: "btn btn-primary btn-block" %>
+        </div>
+    <% end %>
+    
+    <p>Items in this box: <%= @item_count %></p>
+    <% @items.each do |item| %>
+        <div class="media">
+          <div class="media-left">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= item.name %></h4>
+            <p>Created <%= time_ago_in_words(item.created_at) %> ago</p>
+            <div class="links">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default"><%= link_to "View", item_path(item) %></button>
+                    <button type="button" class="btn btn-default"><%= link_to "Edit", edit_item_path(item) %></button>
+                    <button type="button" class="btn btn-default"><%= link_to "Delete", item_path(item), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+</div>

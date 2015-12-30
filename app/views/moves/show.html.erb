@@ -23,9 +23,9 @@
             <p>Created <%= time_ago_in_words(box.created_at) %> ago</p>
             <div class="links">
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default"><%= link_to "View", move_box_path(@move, box) %></button>
-                    <button type="button" class="btn btn-default"><%= link_to "Edit", edit_move_box_path(@move, box) %></button>
-                    <button type="button" class="btn btn-default"><%= link_to "Delete", move_box_path(@move, box), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                    <button type="button" class="btn btn-default"><%= link_to "View", box_path(box) %></button>
+                    <button type="button" class="btn btn-default"><%= link_to "Edit", edit_box_path(box) %></button>
+                    <button type="button" class="btn btn-default"><%= link_to "Delete", box_path(box), method: :delete, data: { confirm: "Are you sure?" } %></button>
                 </div>
             </div>
           </div>

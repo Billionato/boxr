@@ -20,7 +20,7 @@ class MovesController < ApplicationController
         @move = Move.new(move_params)
         
         if @move.save
-            redirect_to @move
+            redirect_to @move, notice: "Successfully created move '#{@move.name}'"
         else
             render 'new'
         end

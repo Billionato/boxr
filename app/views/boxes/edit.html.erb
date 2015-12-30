@@ -1,2 +1,6 @@
-<%= render 'form' %>
+<%= simple_form_for(@box, html: { class: 'form-horizontal'}) do |f| %>
+    <%= f.input :name, label: "Box Name" %>
+    <%= f.button :submit, class: "btn btn-success btn-block" %>
+<% end %>
+
 <%= link_to "Cancel", @move %>

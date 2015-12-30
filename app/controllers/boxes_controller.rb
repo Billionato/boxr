@@ -1,8 +1,12 @@
 class BoxesController < ApplicationController
-    before_action :set_move
+    
+    before_action :set_move_new, only: [:new, :create]
+    before_action :set_move_update, only: [:show, :edit, :update, :destroy]
     before_action :set_box, only: [:show, :edit, :update, :destroy]
     
     def show
+        @items = Item.where(box_id: @box.id).order("created_at DESC")
+        @item_count = @items.count
     end
     
     def new
@@ -14,7 +18,7 @@ class BoxesController < ApplicationController
         @box.move_id = @move.id
         
         if @box.save
-            redirect_to @move
+            redirect_to @move, notice: "Successfully created box '#{@box.name}'"
         else
             render 'new'
         end
@@ -25,7 +29,7 @@ class BoxesController < ApplicationController
     
     def update
         if @box.update_attributes(box_params)
-            redirect_to @move
+            redirect_to @move, notice: "Successfully updated box '#{@box.name}'"
         else
             render 'edit'
         end
@@ -38,8 +42,14 @@ class BoxesController < ApplicationController
     
     private
     
-    def set_move
+    def set_move_new
         @move = Move.find(params[:move_id])
+    end
+    
+    def set_move_update
+        @box = Box.find(params[:id])
+        @move_id = @box.move_id
+        @move = Move.find(@move_id)
     end
     
     def set_box

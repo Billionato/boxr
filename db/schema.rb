@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224232508) do
+ActiveRecord::Schema.define(version: 20151229012220) do
 
   create_table "boxes", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20151224232508) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "box_id"
+    t.integer  "move_id"
   end
 
   create_table "moves", force: :cascade do |t|
