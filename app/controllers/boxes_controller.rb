@@ -7,6 +7,9 @@ class BoxesController < ApplicationController
     def show
         @items = Item.where(box_id: @box.id).order("created_at DESC")
         @item_count = @items.count
+        
+        qr_string = url_for(@box)
+        @qrcode = RQRCode::QRCode.new(qr_string).to_img.resize(200,200).to_data_url
     end
     
     def new
