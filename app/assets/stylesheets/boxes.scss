@@ -1,3 +1,50 @@
 // Place all the styles related to the Boxes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.box-show {
+   .jumbotron {
+        background: $yellow;
+    }
+}
+
+.item-container {
+    margin: 20px 0;
+    a {
+        text-decoration: none;
+    }
+    .media {
+        margin: 10px 10px 30px 10px;
+        @include box-shadow;
+        border-radius: 5px;
+        .media-body {
+            //text-align: center;
+            padding: 15px 10px;
+            .media-heading {
+                margin: 0;
+                font-size: 18px;
+                font-weight: 700;
+                color: $dark;
+            }
+            .secondary-heading {
+                margin: 10px 0 5px 0;
+                font-size: 14px;
+                //padding: 5px 0 0 0;
+                color: lighten($dark, 50%);
+            }
+        }
+        .item-image {
+            width: 100%;
+            max-width: 100%;
+        }
+        &:hover {
+            .item-image {
+                opacity: 0.8;
+            }
+            .media-body {
+                .media-heading {
+                    color: $orange;
+                }
+            }
+        }
+    }
+}

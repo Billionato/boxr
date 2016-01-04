@@ -1,37 +1,62 @@
-<h2><%= @box.name %></h2>
+<div class="box-show">
+    <div class="jumbotron">
+        <%= link_to @move, class: "internal-nav" do %>
+            <i class="fa fa-arrow-left"></i>
+            Back
+        <% end %>
+        <div class="jumbotron-media-links">
+            <%= link_to "Edit Box", edit_box_path(@box) %> | 
+            <%= link_to "Delete Box", @box, method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+        <div class="move-container">
+            <div class="media">
+              <div class="media-body">
+                <h2 class="media-heading"><%= @box.name %></h2>
+                <h3 class="box-info">
+                    <%= pluralize(@item_count, 'Item') %>
+                </h3>
+                <div id="print-label" class="stats">
+                    <%= link_to edit_box_path(@box) do %>
+                        <i class="fa fa-qrcode"></i> 
+                        Print Label
+                    <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div>
-    <%= link_to "Back", @move %> | 
-    <%= link_to "Edit Box", edit_box_path(@box) %> | 
-    <%= link_to "Delete Box", @box, method: :delete, data: { confirm: "Are you sure?" } %> | 
-    <%= link_to "Add Item", new_box_item_path(@box) %>
-    
     <% if @items.empty? %>
-        <div class="alert alert-info">
-            <p>There are no items yet. Add them below:</p>
-            <%= link_to "Add Item", new_box_item_path(@box), class: "btn btn-primary btn-block" %>
-        </div>
-    <% end %>
-    
-    <p>Items in this box: <%= @item_count %></p>
-    <% @items.each do |item| %>
-        <div class="media">
-          <div class="media-left">
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading"><%= item.name %></h4>
-            <p>Created <%= time_ago_in_words(item.created_at) %> ago</p>
-            <div class="links">
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default"><%= link_to "View", item_path(item) %></button>
-                    <button type="button" class="btn btn-default"><%= link_to "Edit", edit_item_path(item) %></button>
-                    <button type="button" class="btn btn-default"><%= link_to "Delete", item_path(item), method: :delete, data: { confirm: "Are you sure?" } %></button>
-                </div>
+        <div class="empty-state-container">
+            <div class="alert alert-info">
+                <p>There are no items yet. Add them below.</p>
             </div>
-          </div>
         </div>
     <% end %>
     
-    <h3>QR Code</h3>
-    <%= image_tag @qrcode %> 
+    <div class="btn-container">
+        <%= link_to new_box_item_path(@box), class: "btn btn-block" do %>
+            <i class="fa fa-plus"></i>
+            Add Item
+        <% end %>
+    </div>
+    
+    <div class="item-container">
+        <% @items.each do |item| %>
+            <%= link_to item_path(item) do %>
+                <div class="col-md-3">
+                    <div class="media">
+                        <%= image_tag("hello_internet_podcast.png", class: "item-image") %>
+                        <div class="media-body">
+                            <h2 class="media-heading"><%= item.name %></h2>
+                            <p class="secondary-heading">Added <%= time_ago_in_words(item.created_at) %> ago</p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    
 </div>

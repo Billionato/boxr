@@ -9,7 +9,7 @@ class BoxesController < ApplicationController
         @item_count = @items.count
         
         qr_string = url_for(@box)
-        @qrcode = RQRCode::QRCode.new(qr_string).to_img.resize(200,200).to_data_url
+        @qrcode_icon = RQRCode::QRCode.new(qr_string).to_img.resize(30,30).to_data_url
     end
     
     def new
