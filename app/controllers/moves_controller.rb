@@ -3,7 +3,7 @@ class MovesController < ApplicationController
     before_action :set_move, except: [:index, :new, :create]
     
     def index
-        @moves = Move.all
+        @moves = Move.order(created_at: :DESC)
     end
     
     def show

@@ -1,9 +1,14 @@
-<header class="main-header cf">
-    <div id="logo"><%= link_to "Boxr", root_path %></div>
-    <nav>
-        <ul>
-            <li><a href="#">Sign Up</a></li>
-            <li><a href="#">Login</a></li>
-        </ul>
-    </nav>
-</header>
+<nav class="navbar navbar-default main-header">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div id="logo"><%= link_to "Boxr", root_path %></div>
+    </div>
+    <div class="navbar-right">
+      <ul class="nav navbar-nav">
+          <li><%= link_to "New Move", new_move_path %></li>
+          <li><%= link_to "Sign Up" %></li>
+          <li><%= link_to "Login" %></li>
+      </ul>
+     </div>
+  </div>
+</nav>

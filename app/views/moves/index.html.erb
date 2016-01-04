@@ -1,24 +1,25 @@
-<div class="container">
-    <%= link_to "New Move", new_move_path %>
-    
-    <% if @moves.empty? %>
-        <div class="alert alert-info">
-            <p>You have no moves scheduled.</p>
-            <%= link_to "New Move", new_move_path, class: "btn btn-info" %>
-        </div>
-    <% end %>
-    
-    <div class="move_container">
-        <% @moves.each do |move| %>
-            <%= link_to move do %>
-                <div class="col-md-4">
-                    <div class="media">
-                      <div class="media-body">
-                        <h2 class="media-heading"><%= move.name %></h2>
-                      </div>
-                    </div>
-                </div>
-            <% end %>
-        <% end %>
+<% if @moves.empty? %>
+    <div class="alert alert-info">
+        <p>You have no moves scheduled.</p>
+        <%= link_to "New Move", new_move_path, class: "btn btn-info" %>
     </div>
+<% end %>
+
+<div class="move-container">
+    <% @moves.each do |move| %>
+        <%= link_to move do %>
+            <div class="col-md-4">
+                <div class="media">
+                  <div class="media-body">
+                    <h2 class="media-heading"><%= move.name %></h2>
+                    <h3 class="box-info">
+                        <%= move.from %>
+                        <i class="fa fa-arrow-right"></i>
+                        <%= move.to %>
+                    </h3>
+                  </div>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
 </div>
