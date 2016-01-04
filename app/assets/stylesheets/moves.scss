@@ -4,7 +4,7 @@
 
 .move-container {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
     a {
         text-decoration: none;
         color: $dark;
@@ -22,8 +22,83 @@
             font-size: 16px;
             font-weight: 700;
         }
+        .links {
+            margin: 20px 0 0 0;
+        }
         &:hover {
             border: 1px solid $orange;
         }
+    }
+}
+
+.jumbotron {
+    position: relative;
+    padding-bottom: 5px;
+    //background: lighten($orange, 5%);
+    .internal-nav {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 16px;
+        color: $orange;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .jumbotron-media-links {
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        text-transform: uppercase;
+        a {
+            color: $dark;
+            &:hover {
+                text-decoration: none;
+                color: $orange;
+            }
+        }
+    }
+    .move-container {
+        .media {
+            border: none;
+            .media-heading {
+                font-size: 50px;
+            }
+            .box-info {
+                font-size: 20px;
+            }
+            .stats {
+                margin: 50px 0 0 0;
+                font-size: 20px;
+                //font-weight: 700;
+            }
+            &:hover {
+                border: none;
+            }
+        }
+    }
+}
+
+.btn-container {
+    margin: 0 auto;
+    width: 45%;
+    .btn {
+        border-radius: 50px;
+        border: 2px solid $orange;
+        background: $orange;
+        color: $white;
+        padding: 10px 0;
+        font-size: 16px;
+        &:hover {
+            background: darken($orange, 5%);
+            border: 2px solid darken($orange, 5%);
+        }
+    }
+}
+
+.empty-state-container {
+    .alert {
+        text-align: center;
+        font-size: 18px;
     }
 }
