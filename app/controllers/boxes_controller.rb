@@ -1,5 +1,6 @@
 class BoxesController < ApplicationController
     
+    before_action :authenticate_user!
     before_action :set_move_new, only: [:new, :create]
     before_action :set_move_update, only: [:show, :edit, :update, :destroy]
     before_action :set_box, only: [:show, :edit, :update, :destroy]
@@ -13,12 +14,13 @@ class BoxesController < ApplicationController
     end
     
     def new
-        @box = Box.new
+        @box = @move.boxes.build
     end
     
     def create
-        @box = Box.create!(box_params)
-        @box.move_id = @move.id
+        @box = @move.boxes.build(box_params)
+        
+        @box.user_id = current_user.id
         
         if @box.save
             redirect_to @move, notice: "Successfully created box '#{@box.name}'"

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   # I have to find a better way to do the following routing:
   # a) This code block 
   resources :moves do
