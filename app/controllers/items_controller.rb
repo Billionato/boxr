@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-    
+        
+    before_action :authenticate_user!
     before_action :set_box_new, only: [:new, :create]
     before_action :set_box_update, only: [:show, :edit, :update, :destroy]
     # before_action :set_move
@@ -9,14 +10,14 @@ class ItemsController < ApplicationController
     end
     
     def new
-        @item = Item.new
+        @item = @box.items.build
     end
     
     def create
-        @item = Item.create!(item_params)
+        @item = @box.items.build(item_params)
         
-        @item.box_id = @box.id
         @item.move_id = @box.move_id
+        @item.user_id = current_user.id
         
         if @item.save
             redirect_to @box

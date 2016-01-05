@@ -52,9 +52,13 @@ body {
 .form-container {
     margin: 0 auto;
     padding: 100px 0;
-    width: 75%;
+    width: 85%;
     input[type="text"] {
         padding: 20px;
+    }
+    .devise-shared-link {
+        text-align: center;
+        margin-top: 20px;
     }
 }
 

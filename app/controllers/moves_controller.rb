@@ -1,9 +1,10 @@
 class MovesController < ApplicationController
     
+    before_action :authenticate_user!
     before_action :set_move, except: [:index, :new, :create]
     
     def index
-        @moves = Move.order(created_at: :DESC)
+        @moves = Move.where(user_id: current_user.id).order(created_at: :DESC)
     end
     
     def show
@@ -13,11 +14,11 @@ class MovesController < ApplicationController
     
     #view for the create method
     def new
-        @move = Move.new
+        @move = current_user.moves.build
     end
     
     def create
-        @move = Move.new(move_params)
+        @move = current_user.moves.build(move_params)
         
         if @move.save
             redirect_to @move, notice: "Successfully created move '#{@move.name}'"
