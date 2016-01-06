@@ -18,7 +18,7 @@ gem 'devise', '~> 3.5', '>= 3.5.3'
 # file-handline
 gem 'paperclip', '~> 4.3', '>= 4.3.2'
 # AWS
-gem 'aws-sdk', '~> 2.2', '>= 2.2.9'
+gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
   gem 'byebug'
