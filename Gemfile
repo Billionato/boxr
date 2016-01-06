@@ -17,7 +17,8 @@ gem 'rqrcode_png', '~> 0.1.5'
 gem 'devise', '~> 3.5', '>= 3.5.3'
 # file-handline
 gem 'paperclip', '~> 4.3', '>= 4.3.2'
-
+# AWS
+gem 'aws-sdk', '~> 2.2', '>= 2.2.9'
 
 group :development, :test do
   gem 'byebug'
