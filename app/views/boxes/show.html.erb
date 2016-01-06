@@ -48,7 +48,9 @@
             <%= link_to item_path(item) do %>
                 <div class="col-md-3">
                     <div class="media">
-                        <%= image_tag("hello_internet_podcast.png", class: "item-image") %>
+                        <div class="image-wrapper">
+                            <%= image_tag item.image.url(:medium), class: "item-image" %>
+                        </div>
                         <div class="media-body">
                             <h2 class="media-heading"><%= item.name %></h2>
                             <p class="secondary-heading">Added <%= time_ago_in_words(item.created_at) %> ago</p>

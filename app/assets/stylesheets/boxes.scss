@@ -32,13 +32,18 @@
                 color: lighten($dark, 50%);
             }
         }
+        .image-wrapper {
+            //width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
         .item-image {
             width: 100%;
-            max-width: 100%;
+            @include transition;
         }
         &:hover {
             .item-image {
-                opacity: 0.8;
+                @include transform-scale(scale(1.1));
             }
             .media-body {
                 .media-heading {

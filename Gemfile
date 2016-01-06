@@ -24,10 +24,12 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
-# gem 'rqrcode', '~> 0.8.0'
+
 gem 'rqrcode_png', '~> 0.1.5'
 
 gem 'devise', '~> 3.5', '>= 3.5.3'
+
+gem 'paperclip', '~> 4.3', '>= 4.3.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
