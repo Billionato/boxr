@@ -1,0 +1,26 @@
+<div class="container">
+    <%= link_to box_path(@box), class: "internal-nav" do %>
+        <i class="fa fa-arrow-left"></i>
+        Back
+    <% end %>
+    <%= link_to "PRINT LABELS", "#", id: "print-button", class: "btn btn-success btn-block", :onclick => "window.print();return false;" %>
+    <% 6.times do %>
+        <div id="label-container" class="col-md-6">
+            <div class="label-wrapper">
+                <div class="media">
+                  <div class="media-body">
+                    <div id="qr-wrapper">
+                        <%= image_tag @qrcode %>
+                    </div>
+                    <div class="box-info">
+                       <h4 class="media-heading">Boxr</h4>
+                        <p class="box-stat">Move: <strong><%= @move.name %></strong></p>
+                        <p class="box-stat">Box: <strong><%= @box.name %></strong></p>
+                        <p class="box-stat">Items: <strong><%= @item_count %></strong></p> 
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

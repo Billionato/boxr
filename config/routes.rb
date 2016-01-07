@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # b) This code block
   resources :boxes, except: [:new, :show, :create, :edit, :update, :destroy] do
     resources :items, only: [:new, :create]
+    member do
+      get 'print_label'
+    end
   end
   resources :items, only: [:show, :edit, :update, :destroy]
   

@@ -16,7 +16,7 @@
                     <%= pluralize(@item_count, 'Item') %>
                 </h3>
                 <div id="print-label" class="stats">
-                    <%= link_to edit_box_path(@box) do %>
+                    <%= link_to print_label_box_path(@box) do %>
                         <i class="fa fa-qrcode"></i> 
                         Print Label
                     <% end %>

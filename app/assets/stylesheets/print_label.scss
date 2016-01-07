@@ -1,0 +1,52 @@
+#print-button {
+    width: 250px;
+    margin: 0 auto;
+}
+
+#label-container
+{
+    margin-top: 20px;
+}
+
+.label-wrapper {
+    margin: 20px 15px;
+    padding: 5px 10px;
+    border: 2px solid $black;
+    .media-body {
+        padding: 20px 0 0 0;
+        #qr-wrapper {
+            margin: 0 0 20px 0;
+            float: left;
+        }
+        .box-info {
+            float: right;
+            //border: 1px solid $orange;
+            width: 230px;
+            padding: 15px;
+            .media-heading {
+                font-size: 24px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            .box-stat {
+                margin: 20px 0;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media print {
+    .container { 
+        .btn {
+            display: none;
+        }
+        .internal-nav {
+            display: none;
+        }
+    }
+    #label-container {
+        page-break-inside: avoid;
+    }
+}

@@ -2,15 +2,11 @@ class BoxesController < ApplicationController
     
     before_action :authenticate_user!
     before_action :set_move_new, only: [:new, :create]
-    before_action :set_move_update, only: [:show, :edit, :update, :destroy]
-    before_action :set_box, only: [:show, :edit, :update, :destroy]
+    before_action :set_move_update, except: [:new, :create]
+    before_action :set_box, except: [:new, :create]
+    before_action :fetch_items, only: [:show, :print_label]
     
     def show
-        @items = Item.where(box_id: @box.id).order("created_at DESC")
-        @item_count = @items.count
-        
-        qr_string = url_for(@box)
-        @qrcode_icon = RQRCode::QRCode.new(qr_string).to_img.resize(30,30).to_data_url
     end
     
     def new
@@ -45,6 +41,12 @@ class BoxesController < ApplicationController
         redirect_to @move
     end
     
+    # action to generate print label for box
+    def print_label
+        qr_string = url_for(@box)
+        @qrcode = RQRCode::QRCode.new(qr_string).to_img.resize(225,225).to_data_url
+    end
+    
     private
     
     def set_move_new
@@ -59,6 +61,11 @@ class BoxesController < ApplicationController
     
     def set_box
         @box = Box.find(params[:id])
+    end
+    
+    def fetch_items
+        @items = Item.where(box_id: @box.id).order("created_at DESC")
+        @item_count = @items.count
     end
     
     def box_params
