@@ -42,7 +42,7 @@ class MovesController < ApplicationController
     def destroy
         @move = Move.find(params[:id])
         @move.destroy
-        redirect_to root_path
+        redirect_to root_path, notice: "Successfully deleted move"
     end
     
     private

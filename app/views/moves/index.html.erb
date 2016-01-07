@@ -1,9 +1,17 @@
 <% if @moves.empty? %>
-    <div class="alert alert-info">
-        <p>You have no moves scheduled.</p>
-        <%= link_to "New Move", new_move_path, class: "btn btn-info" %>
+    <div class="empty-state-container">
+       <div class="alert alert-info">
+            <p>You have no moves scheduled.</p>
+        </div> 
     </div>
 <% end %>
+
+<div class="btn-container">
+    <%= link_to new_move_path, class: "btn btn-block" do %>
+        <i class="fa fa-plus"></i>
+        New Move
+    <% end %>
+</div>
 
 <div class="move-container">
     <% @moves.each do |move| %>

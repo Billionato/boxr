@@ -38,7 +38,7 @@ class BoxesController < ApplicationController
     
     def destroy
         @box.destroy
-        redirect_to @move
+        redirect_to @move, notice: "Successfully deleted box"
     end
     
     # action to generate print label for box

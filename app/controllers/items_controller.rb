@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
         @item.user_id = current_user.id
         
         if @item.save
-            redirect_to @box
+            redirect_to @box, notice: "Successfully added item '#{@item.name}'"
         else
             render 'new'
         end
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
     
     def update
         if @item.update_attributes(item_params)
-            redirect_to @box
+            redirect_to @box, notice: "Successfully updated item"
         else
             render 'edit'
         end
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
     
     def destroy
         @item.destroy
-        redirect_to @box
+        redirect_to @box, notice: "Successfully deleted item"
     end
     
     private

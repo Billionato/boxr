@@ -10,7 +10,7 @@
       </div>
     
       <div class="form-actions">
-        <%= f.button :submit, "Log in", class: "btn btn-block btn-info" %>
+        <%= button_tag "Log in", class: "btn btn-block btn-info", data: { disable_with: "<i class='fa fa-spinner fa-pulse'></i> Logging in..." } %>
       </div>
     <% end %>
     
