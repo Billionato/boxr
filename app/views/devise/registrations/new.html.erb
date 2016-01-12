@@ -1,22 +1,37 @@
 <div class="form-container">
   <div class="col-md-8 col-md-offset-2">
-    <h2>Sign up</h2>
-    
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
-    
-      <div class="form-inputs">
-        <%= f.input :first_name, label: false, placeholder: "First Name", required: true, autofocus: true %>
-        <%= f.input :last_name, label: false, placeholder: "Last Name", required: true %>
-        <%= f.input :email, label: false, placeholder: "Email", required: true %>
-        <%= f.input :password, label: false, placeholder: "Password", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-        <%= f.input :password_confirmation, label: false, placeholder: "Password, again", required: true %>
-      </div>
-    
-      <div class="form-actions">
-        <%= button_tag "Sign up", class: "btn btn-block btn-info", data: { disable_with: "<i class='fa fa-spinner fa-pulse'></i> Signing up..." } %>
-      </div>
+    <%= link_to user_omniauth_authorize_path(:facebook), id: "fb-login", class: "btn btn-lg omniauth-login" do %>
+      <i class="fa fa-facebook-official"></i>
+      Sign up with Facebook
     <% end %>
+    
+    <hr></hr>
+    
+    <%= link_to "#", id: "email-login", class: "btn btn-lg omniauth-login" do %>
+      <i class="fa fa-envelope"></i>
+      Sign up with Email
+    <% end %>
+    
+    <div id="email-form">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+      
+        <div class="form-inputs">
+          <%= f.input :first_name, label: false, placeholder: "First Name", autofocus: true %>
+          <%= f.input :last_name, label: false, placeholder: "Last Name" %>
+          <%= f.input :email, label: false, placeholder: "Email", required: true %>
+          
+          <% if f.object.password_required? %>
+            <%= f.input :password, label: false, placeholder: "Password", required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+            <%= f.input :password_confirmation, label: false, placeholder: "Password, again", required: true %>
+          <% end %>
+        </div>
+      
+        <div class="form-actions">
+          <%= button_tag "Sign up", class: "btn btn-block btn-info", data: { disable_with: "<i class='fa fa-spinner fa-pulse'></i> Signing up..." } %>
+        </div>
+      <% end %>
+    </div>
     
     <%= render "devise/shared/links" %>
   </div>

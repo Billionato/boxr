@@ -7,6 +7,7 @@ $grey: #808080; //rgb(128,128,128)
 $white: #FFFFFF;
 $dark: #22292e;
 $black: #000;
+$fb: #3b5999;
 $semi_transparent: rgba(0,0,0,0.25);
 
 @mixin box-shadow {
@@ -202,4 +203,36 @@ body {
     text-align: center;
     font-weight: 700;
     color: white;
+}
+
+.omniauth-login {
+    width: 100%;
+    padding: 10px;
+    color: $white;
+    font-weight: 700;
+    //margin: 0 0 25px 0;
+}
+
+.fa-facebook-official, .fa-envelope {
+    padding: 0 5px 0 0;    
+}
+
+#fb-login {
+    background: $fb;
+    &:hover {
+        color: $white;
+        background: lighten($fb, 10%);
+    }
+}
+
+#email-login {
+    background: $grey;
+    &:hover {
+        color: $white;
+        background: lighten($grey, 10%);
+    }
+}
+
+#email-form {
+    display: none;
 }
