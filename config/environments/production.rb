@@ -89,10 +89,12 @@ Rails.application.configure do
   
   # Mailer
   config.action_mailer.default_url_options = { host: 'https://ancient-dusk-7174.herokuapp.com' }
+  config.action_mailer.default_options = {
+     from: ENV["SENDER_ADDRESS"]
+  }
   
   # Setup SMTP via Gmail Account
   config.action_mailer.delivery_method = :smtp
-
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
