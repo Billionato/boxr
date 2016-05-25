@@ -15,12 +15,15 @@ gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'rqrcode_png', '~> 0.1.5'
 # authentication system
 gem 'devise', '~> 3.5', '>= 3.5.3'
+gem 'devise_invitable', '~> 1.6'
 # file-handline
 gem 'paperclip', '~> 4.3', '>= 4.3.2'
 # AWS
 gem 'aws-sdk', '< 2.0'
 # Facebook integration through Omniauth
 gem 'omniauth-facebook', '~> 3.0'
+# City-State
+# gem 'city-state', '~> 0.0.13'
 
 group :development, :test do
   gem 'byebug'
@@ -30,6 +33,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'sqlite3'
+  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 end
 
 group :production do
