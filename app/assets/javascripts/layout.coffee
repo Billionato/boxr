@@ -1,4 +1,4 @@
-jQuery ->
-    $('#email-login').click ->
-        $('#email-form').show()
-        $('#email-login').hide()
+# jQuery ->
+#     $('#email-login').click ->
+#         $('#email-form').show()
+#         $('#email-login').hide()
